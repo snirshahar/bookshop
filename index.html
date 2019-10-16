@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title data-trans="title">Book Shop</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911&display=swap" rel="stylesheet">
+</head>
+
+<body onload="renderBooks()" onkeydown="onKeyEvent(event.key)">
+    <div class="background-image"></div>
+    <div class="content">
+        <h1 data-trans="title">My Bookshop</h1>
+        <header>
+            <select onchange="onSetLang(this.value)">
+                <option value="en">English</option>
+                <option value="he">עברית</option>
+                <option value="es">España (soon)</option>
+            </select>
+        </header>
+        <button data-trans="newBook" onclick="onCreateBook()">Create New Book</button>
+        <table class="books-table">
+            <thead>
+                <tr>
+                    <th data-trans="bookId">ID</th>
+                    <th data-trans="bookTitle">Title</th>
+                    <th data-trans="price">Price</th>
+                    <th data-trans="actions">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="books-container">
+            </tbody>
+        </table>
+    </div>
+    <div class="modal create-book hidden">
+        <button onclick="onCloseModal()" class="close-modal">X</button>
+        <ul>
+            <li>Book Title: <input class="create-book-name" type="text" placeholder="Enter Book Name" /></li>
+            <li>Book Price: <input class="create-book-price" type="text" placeholder="Enter Book Price" /></li>
+            <li>Book Image: <input class="create-book-img" type="text" placeholder="Enter URL" /></li>
+            <li class="error-msg"></li>
+        </ul>
+        <button onclick="onAddNewBook()" class="add-new-book">Add</button>
+    </div>
+    <div class="modal book-details hidden">
+        <button onclick="onCloseModal()" class="close-modal">X</button>
+        <img class="book-img" />
+        <ul>
+            <li class="title"></li>
+            <li>Id: <span class="id"></span></li>
+            <li>Price: <span class="price"></span></li>
+            <li class="rating"></li>
+        </ul>
+    </div>
+    <div class="modal update-book hidden">
+        <button onclick="onCloseModal()" class="close-modal">X</button>
+        <ul>
+            <li>Book Price: <input class="new-book-price" type="text" placeholder="enter new price (required)" /></li>
+            <li class="error-msg"></li>
+        </ul>
+        <div class="update-price-btn-container"></div>
+    </div>
+    <script src="js/util-service.js"></script>
+    <script src="js/i18n-service.js"></script>
+    <script src="js/book-service.js"></script>
+    <script src="js/book-controller.js"></script>
+</body>
+
+</html>
